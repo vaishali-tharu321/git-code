@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    li{
+        list-style-type:none;
+    }
+
+</style>
+<body>
+    <input type="text" id="data">
+    <button  onclick="data(event)">click</button>
+    <ul id="list"></ul>
+    <script>
+        function data(event){
+            event.preventDefault()
+            const data=document.getElementById("data")
+            const list=document.getElementById("list")
+            const li=document.createElement("li")
+            list.appendChild(li)
+            const btn=document.createElement("button")
+            const task=document.createElement("span")
+             task.innerText=data.value
+             li.appendChild(task)
+            btn.innerHTML="Delete"
+            btn.className="click"
+            li.appendChild(btn)
+                task.addEventListener("click",()=>{
+                     if(task.style.textDecoration==="line-through"){
+                        task.style.textDecoration="none"
+                     }
+                     else{
+                        task.style.textDecoration="line-through"
+                     }
+                })
+              btn.addEventListener("click",()=>{
+                    li.remove();   
+                })
+            console.log(data.value)
+            data.value=""
+        }
+    </script>
+</body>
+</html>
